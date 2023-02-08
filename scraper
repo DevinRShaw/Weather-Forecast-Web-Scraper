@@ -2,6 +2,7 @@
 from bs4 import BeautifulSoup
 import requests
 
+#lat and lon can be changed to recieve data from different region
 
 #request the HTML document
 URL = "https://forecast.weather.gov/MapClick.php?lat=37.7772&lon=-122.4168#.Y5ZDcNLMLBs"
@@ -36,14 +37,6 @@ weather = pd.DataFrame({
     "desc":descs
 })
 
-#extracts the strings inside the temp nums collumn, nums only by using regex
-tempNums = weather["temp"].str.extract('(^\d)*')
-
-#converts the nums from the string into integers and adds them to a new collumn of the dataframe
-weather["tempNum"] = tempNums.astype('float')
-
-#basic statistic on the data
-weather["tempNum"].mean()
 
 
 
